@@ -1,23 +1,61 @@
-p#Title {
-    color: rgb(250, 192, 255); 
+p.Head {
     font-family: "Times New Roman";
     margin: 10px 0 0 10px;
-    font-size: 40px;
     white-space: nowrap;
-    width: 40em;
-    animation: animateP 4s steps(60, end); 
+    width: 100%;
+    animation: animateP 1.5s steps(90, end); 
+    text-align: center;
   }
+#Title {
+  color: rgb(250, 192, 255); 
+  font-size: 40px;
+}
 
-p#SubTitle {
-    color: pink; 
-    font-family: "Times New Roman";
-    margin: 10px 0 0 10px;
-    font-size: 20px;
-    white-space: nowrap;
-    width: 40em;
-    animation: animateP 4s steps(60, end); 
-  }
-  
-  @keyframes animateP{ 
-    from { width: 0; } 
-  } 
+#SubTitle {
+  color: pink; 
+  font-size: 20px;
+  text-align: center;
+}
+
+@keyframes animateP{ 
+  from { width: 120%; } 
+} 
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  padding: 0px 0px 0px 0px;
+}
+table {
+  width: 100%;
+  margin: 0px 0px 0px 0px;
+}
+form {
+  width: 50%;
+  border: 1px solid black;
+  margin: 10px 5px 5px 10px;
+  padding: 0px 10px 20px 10px;
+  height: 70%;
+  visibility: hidden;
+}
+
+input {
+  margin: 2em 0em 0em 2em;
+}
+
+div {
+  margin: 2px 0em 0em 2px;
+  white-space: nowrap;
+}
+
+#Register {
+  margin: 3em 0em 0em 10em;
+  height: 5%;
+  width: 10%;
+}
+
+.Error {
+  margin: 0px 0px 0px 0px;
+  font-weight: bold;
+  white-space: nowrap;
+}

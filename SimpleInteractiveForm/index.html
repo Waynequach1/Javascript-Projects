@@ -2,17 +2,136 @@
     <HEAD>
         <TITLE>Simple Interactive Form</TITLE>
         <link rel="stylesheet" href="default.css">
+        <meta charset="UTF-8">
     </HEAD>
 
     <BODY>
-        <CENTER>
-        <p id="Title">Welcome to this small project!</p>
+        <p id="Title" class ="Head">Welcome to this small project!</p>
         <p id="SubTitle"></p>
-        </CENTER>
+        <br>
+        <form id="Registerform" method="post">
+            <h1>Sign Up Here!</h1>
+            <p>
+                A simple sign up page with realtime checks for username and password requirements.
+                (Try inputting Bo_ in username to see all the valid error messages.)
+            </p>
+            <hr>
+            <div>Welcome to Small Project! Usernames must be unique and atleast 4 characters long. </div><br>
+            <label for="User">Username: </label>
+            <input name="User" type="text">
+            <p id="UserLen" class="Error"></p>
+            <p id="UserExists" class="Error"></p>
+            <p id="UserChar" class="Error"></p>
+            <p id="ValidUser" class="Error"></p>
+            <div>Addtionally passwords should be atleast 7 characters long, include a number, and include a capital letter. </div><br>
+            <label for="Pass">Password: </label>
+            <input name="Pass" type="text">
+            <p id="PassLen" class="Error"></p>
+            <p id="PassNum" class="Error"></p>
+            <p id="PassCapital" class="Error"></p>
+            <p id="PassValid" class="Error"></p>
+            <p id="PassChar" class="Error"></p
+
+            <br>
+            <input name="Submit" type="submit" value ="Register" id="Register">
+            
+        </form>
     </BODY>
 
     <script type="text/javascript">
         let text = "There isn't too much to do right now though."
-        setTimeout(function(){document.getElementById("SubTitle").innerHTML = text}, 3000);
+        setTimeout(function(){document.getElementById("SubTitle").innerHTML = text}, 2000);
+        setTimeout(function(){document.getElementById("Registerform").style.visibility = "visible" }, 2000);
+
+        //Event Listeners
+
+        document.getElementsByName("User")[0].addEventListener('change', handleUserField);
+        document.getElementsByName("Pass")[0].addEventListener('change', handlePassField);
+
+        function handleUserField() {
+            let commonNames = ["Bo_", "User", "Joey", "Admin"]; //Sudo database name grabber
+            let blacklist = ["_", "%", "\\"];
+            let valid = true;
+            document.getElementById("UserLen").innerHTML = "";
+            document.getElementById("UserExists").innerHTML = "";
+            document.getElementById("UserChar").innerHTML = "";
+            document.getElementById("ValidUser").innerHTML = "";
+
+            if (this.value.length < 4 && this.value != "") {
+                document.getElementById("UserLen").innerHTML = "&#10060 Username is too short";
+                valid = false;
+            }
+
+            if (this.value == "") {
+                valid = false;
+            }
+
+            if (commonNames.includes(this.value)) {
+                document.getElementById("UserExists").innerHTML = "&#10060 This user already exists try adding a number to the end"
+                valid = false;
+            }
+            
+            for (let x = 0; x < blacklist.length; x++) {
+                if (this.value.includes(blacklist[x])) {
+                    valid = false;
+                    document.getElementById("UserChar").innerHTML = "&#10060 Your username contains black listed characters";
+                }
+            }
+            if (valid) {
+                document.getElementById("ValidUser").innerHTML = "&#9989 Valid Username";
+            }
+        
+        }
+
+        function handlePassField() {
+            let blacklist = ["_", "%", "\\"];
+            let valid = true;
+
+            document.getElementById("PassLen").innerHTML = "";
+            document.getElementById("PassNum").innerHTML = "";
+            document.getElementById("PassCapital").innerHTML = "";
+            document.getElementById("PassValid").innerHTML = "";
+            document.getElementById("PassChar").innerHTML = "";
+
+            if (this.value.length < 7 && this.value != "") {
+                document.getElementById("PassLen").innerHTML = "&#10060 Password is too short";
+                valid = false;
+            }
+
+            if (this.value == "") {
+                valid = false;
+            }
+
+            let capital = false;
+            for (let x = 0; x < this.value.length; x++) {
+                if (/[A-Z]/.test(this.value.charAt(x)) == true) {
+                    capital = true;
+                    break;
+                }
+            }
+
+            if (!capital) {
+                document.getElementById("PassCapital").innerHTML = "&#10060 Password requires a capital letter";
+                valid = false;
+            }
+
+            var hasNumber = /\d/;
+            if (hasNumber.test(this.value) == false) {
+                document.getElementById("PassNum").innerHTML = "&#10060 Password requires a number";
+                valid = false;
+            }
+
+            for (let x = 0; x < blacklist.length; x++) {
+                if (this.value.includes(blacklist[x])) {
+                    valid = false;
+                    document.getElementById("PassChar").innerHTML = "&#10060 Your password contains black listed characters";
+                }
+            }
+
+            if (valid) {
+                document.getElementById("PassValid").innerHTML = "&#9989 Valid Password";
+            }
+        }
+        
     </script>
 </HTML>
