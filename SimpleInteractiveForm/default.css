@@ -1,0 +1,23 @@
+p#Title {
+    color: rgb(250, 192, 255); 
+    font-family: "Times New Roman";
+    margin: 10px 0 0 10px;
+    font-size: 40px;
+    white-space: nowrap;
+    width: 40em;
+    animation: animateP 4s steps(60, end); 
+  }
+
+p#SubTitle {
+    color: pink; 
+    font-family: "Times New Roman";
+    margin: 10px 0 0 10px;
+    font-size: 20px;
+    white-space: nowrap;
+    width: 40em;
+    animation: animateP 4s steps(60, end); 
+  }
+  
+  @keyframes animateP{ 
+    from { width: 0; } 
+  } 
