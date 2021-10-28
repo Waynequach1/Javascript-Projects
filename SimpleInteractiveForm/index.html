@@ -11,42 +11,81 @@
         <br>
         <form id="Registerform" method="post">
             <h1>Sign Up Here!</h1>
-            <p>
-                A simple sign up page with realtime checks for username and password requirements.
+            <div id="message">
+                A simple sign up page with realtime checks for username and password requirements. <br>
                 (Try inputting Bo_ in username to see all the valid error messages.)
-            </p>
+            </div>
             <hr>
-            <div>Welcome to Small Project! Usernames must be unique and atleast 4 characters long. </div><br>
-            <label for="User">Username: </label>
-            <input name="User" type="text">
+            <div id="message">Welcome to Small Project! Usernames must be unique and atleast 4 characters long. </div><br>
+
+            <div class="rightDiv"><label for="User"  class="text" type="text">Username: </label>
+            <input name="User" class="inputtext" type="text">
+            </div>
             <p id="UserLen" class="Error"></p>
             <p id="UserExists" class="Error"></p>
             <p id="UserChar" class="Error"></p>
             <p id="ValidUser" class="Error"></p>
-            <div>Addtionally passwords should be atleast 7 characters long, include a number, and include a capital letter. </div><br>
-            <label for="Pass">Password: </label>
-            <input name="Pass" type="text">
+
+            <div id="message">Addtionally passwords should be atleast 7 characters long, include a number, and include a capital letter. </div><br>
+
+            <div class="rightDiv">
+                <label for="Pass" type="text">Password: </label>
+                <input name="Pass" class="inputtext" type="password">
+            </div>
+
             <p id="PassLen" class="Error"></p>
             <p id="PassNum" class="Error"></p>
             <p id="PassCapital" class="Error"></p>
             <p id="PassValid" class="Error"></p>
-            <p id="PassChar" class="Error"></p
-
+            <p id="PassChar" class="Error"></p>
             <br>
-            <input name="Submit" type="submit" value ="Register" id="Register">
             
+            <div class="rightDiv"><label for="ConfirmPass" class="text" type="text" >Confirm Password: </label> 
+            <input name="ConfirmPass" class="inputtext" type="password"></div>
+            <p id="PassCheck" class="Error"></p>
+            <br>
+            <div id="submit">
+                <input name="Submit" type="submit" value ="Register" id="Register">
+            </div>
+            
+        </form>
+        <form id="PlayForm" method="post">
+            <h1>Play Space!</h1>
+            <div id="message">
+                A few small and short games for you to play around with <br>
+                Try inputting text or clicking things!
+            </div>
+            <hr>
         </form>
     </BODY>
 
     <script type="text/javascript">
         let text = "There isn't too much to do right now though."
         setTimeout(function(){document.getElementById("SubTitle").innerHTML = text}, 2000);
-        setTimeout(function(){document.getElementById("Registerform").style.visibility = "visible" }, 2000);
+        setTimeout(function(){document.getElementById("Registerform").style.visibility = "visible" }, 0);
 
         //Event Listeners
 
         document.getElementsByName("User")[0].addEventListener('change', handleUserField);
         document.getElementsByName("Pass")[0].addEventListener('change', handlePassField);
+        document.getElementsByName("ConfirmPass")[0].addEventListener('change', handleConfirmPassField);
+
+        function handleConfirmPassField(repeat) {
+            let enteredpass = document.getElementsByName("Pass")[0].value;
+            document.getElementById("PassCheck").innerHTML = "";
+            let checkPass = document.getElementsByName("ConfirmPass")[0].value;
+
+            if (enteredpass != checkPass) {
+                document.getElementById("PassCheck").innerHTML = "&#10060 Passwords don't match!";
+            } else if (checkPass != "") {
+                document.getElementById("PassCheck").innerHTML = "&#9989 Passwords Match";
+            }
+
+            if (repeat) {
+                handlePassField();
+            }
+            
+        }
 
         function handleUserField() {
             let commonNames = ["Bo_", "User", "Joey", "Admin"]; //Sudo database name grabber
@@ -86,6 +125,7 @@
         function handlePassField() {
             let blacklist = ["_", "%", "\\"];
             let valid = true;
+            let enteredpass = document.getElementsByName("Pass")[0].value;
 
             document.getElementById("PassLen").innerHTML = "";
             document.getElementById("PassNum").innerHTML = "";
@@ -93,41 +133,42 @@
             document.getElementById("PassValid").innerHTML = "";
             document.getElementById("PassChar").innerHTML = "";
 
-            if (this.value.length < 7 && this.value != "") {
+            if (enteredpass.length < 7 && enteredpass != "") {
                 document.getElementById("PassLen").innerHTML = "&#10060 Password is too short";
                 valid = false;
             }
 
-            if (this.value == "") {
+            if (enteredpass == "") {
                 valid = false;
             }
 
             let capital = false;
-            for (let x = 0; x < this.value.length; x++) {
-                if (/[A-Z]/.test(this.value.charAt(x)) == true) {
+            for (let x = 0; x < enteredpass.length; x++) {
+                if (/[A-Z]/.test(enteredpass.charAt(x)) == true) {
                     capital = true;
                     break;
                 }
             }
 
-            if (!capital) {
+            if (!capital && enteredpass != "") {
                 document.getElementById("PassCapital").innerHTML = "&#10060 Password requires a capital letter";
                 valid = false;
             }
 
             var hasNumber = /\d/;
-            if (hasNumber.test(this.value) == false) {
+            if (hasNumber.test(enteredpass) == false && enteredpass != "") {
                 document.getElementById("PassNum").innerHTML = "&#10060 Password requires a number";
                 valid = false;
             }
 
             for (let x = 0; x < blacklist.length; x++) {
-                if (this.value.includes(blacklist[x])) {
+                if (enteredpass.includes(blacklist[x])) {
                     valid = false;
                     document.getElementById("PassChar").innerHTML = "&#10060 Your password contains black listed characters";
                 }
             }
 
+            handleConfirmPassField(false);
             if (valid) {
                 document.getElementById("PassValid").innerHTML = "&#9989 Valid Password";
             }
