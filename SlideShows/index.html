@@ -1,0 +1,61 @@
+
+
+<HTML>
+    <HEAD>
+        <TITLE>Slide Shows</TITLE>
+        <link rel="stylesheet" href="default.css">
+        <meta charset="UTF-8">
+    </HEAD>
+
+    <BODY>
+        <img src="leftarrow.png" id="leftarrow"></img>
+        <img src="rightarrow.png" id="rightarrow"></img>
+        <img src="image1.gif" id="main"></img>
+
+        <div id="MainText">
+            <p id="textTitle">
+                Short and concise title here.
+            </p>
+            <hr>
+            <p id="textDesc">
+                Very long and convulated description will go here. Can have many many lines of text and the world will keep moving hehe.
+            </p>
+
+        </div>
+        <script type="text/javascript">
+            document.getElementById("leftarrow").addEventListener("mouseover", overHandler);
+            document.getElementById("rightarrow").addEventListener("mouseover", overHandler);
+            document.getElementById("leftarrow").addEventListener("mouseout", outHandler);
+            document.getElementById("rightarrow").addEventListener("mouseout", outHandler);
+
+            function overHandler() {
+                if (this.id == "leftarrow") {
+                    this.src = "leftarrowhighlight.png";
+                } else if (this.id == "rightarrow") {
+                    this.src = "rightarrowhighlight.png";
+                }
+            }
+
+            function outHandler() {
+                if (this.id == "leftarrow") {
+                    this.src = "leftarrow.png";
+                } else if (this.id == "rightarrow") {
+                    this.src = "rightarrow.png";
+                }
+            }
+
+        </script>
+
+
+    <div id="foot">
+        This application was made by Wayne Quach
+        <br> To see more projects visit <a href="https://github.com/Waynequach1" target="_blank"> https://github.com/Waynequach1</a>
+    </div>
+
+    </BODY>
+    
+    
+</HTML>
+
+
+

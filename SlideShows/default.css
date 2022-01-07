@@ -1,0 +1,54 @@
+#leftarrow {
+  height: 60%;
+  width: 6%;
+  float: left;
+}
+
+
+#rightarrow {
+  height: 60%;
+  width: 6%;
+  float: right;
+}
+
+
+#main {
+  height: 60%;
+  width: 88%;
+}
+
+#MainText {
+  margin-top: 1%;
+
+  width: 100%;
+  height: 30%;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#textTitle {
+  font-weight: bolder;
+  font-family: "Arial";
+  font-size: x-large;
+  text-align: center;
+}
+
+#textDesc {
+  font-family: "Georgia";
+  padding: 5px;
+  text-align: justify;
+}
+#foot {
+  margin-top: 3vh;
+  width: 100%;
+  height: 5vh;
+  background-color:#b2e9d5;
+  font-weight: bolder;
+  font-family: "Arial";
+  font-size: large;
+  text-align: center;
+}
+
+img {
+  margin-top: 4px;
+}

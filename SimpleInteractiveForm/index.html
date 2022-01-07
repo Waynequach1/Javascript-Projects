@@ -9,74 +9,89 @@
         <p id="Title" class ="Head">Welcome to this small project!</p>
         <p id="SubTitle"></p>
         <br>
-        <form id="Registerform" method="post">
-            <h1>Sign Up Here!</h1>
-            <div id="message">
-                A simple sign up page with realtime checks for username and password requirements. <br>
-                (Try inputting Bo_ in username to see all the valid error messages.)
-            </div>
-            <hr>
-            <div id="message">Welcome to Small Project! Usernames must be unique and atleast 4 characters long. </div><br>
-
-            <div class="rightDiv"><label for="User"  class="text" type="text">Username: </label>
-            <input name="User" class="inputtext" type="text">
-            </div>
-            <p id="UserLen" class="Error"></p>
-            <p id="UserExists" class="Error"></p>
-            <p id="UserChar" class="Error"></p>
-            <p id="ValidUser" class="Error"></p>
-
-            <div id="message">Addtionally passwords should be atleast 7 characters long, include a number, and include a capital letter. </div><br>
-
-            <div class="rightDiv">
-                <label for="Pass" type="text">Password: </label>
-                <input name="Pass" class="inputtext" type="password">
-            </div>
-
-            <p id="PassLen" class="Error"></p>
-            <p id="PassNum" class="Error"></p>
-            <p id="PassCapital" class="Error"></p>
-            <p id="PassValid" class="Error"></p>
-            <p id="PassChar" class="Error"></p>
-            <br>
-            
-            <div class="rightDiv"><label for="ConfirmPass" class="text" type="text" >Confirm Password: </label> 
-            <input name="ConfirmPass" class="inputtext" type="password"></div>
-            <p id="PassCheck" class="Error"></p>
-            <br>
-            <div id="submit">
-                <input name="Submit" type="submit" value ="Register" id="Register">
-            </div>
-            
-        </form>
-        <form id="PlayForm" method="post">
-            <h1>Play Space!</h1>
-            <div id="message">
-                A few small interactable objects for you to play around with <br>
-                Try inputting text or clicking things!
-            </div>
-
-            <hr>
-            <image src="square.png" class="image" id="rotatablesquare"></image>
-
-
-            <br>
-            <div id = "coolersquarediv">
-                <div class="divsquare" id="rotatablesquare2">Im a Div :)</div>
-                <div>
-                    <input type="range" min="0" max="255" value="0" class="slider" id="RedSlider" name="RedSlider">
-                    <input type="range" min="0" max="255" value="0" class="slider" id="GreenSlider" name="GreenSlider">
-                    <input type="range" min="0" max="255" value="0" class="slider" id="BlueSlider" name="BlueSlider">
+        <div>
+            <form id="Registerform" method="post">
+                <h1>Sign Up Here!</h1>
+                <div id="message">
+                    A simple sign up page with realtime checks for username and password requirements. <br>
+                    (Try inputting Bo_ in username to see all the valid error messages.)
                 </div>
-            </div>
-            
-        </form>
-    </BODY>
+                <hr>
+                <div id="message">Welcome to Small Project! Usernames must be unique and atleast 4 characters long. </div><br>
 
+                <div class="rightDiv"><label for="User"  class="text" type="text">Username: </label>
+                <input name="User" class="inputtext" type="text">
+                </div>
+                <p id="UserLen" class="Error"></p>
+                <p id="UserExists" class="Error"></p>
+                <p id="UserChar" class="Error"></p>
+                <p id="ValidUser" class="Error"></p>
+
+                <div id="message">Addtionally passwords should be atleast 7 characters long, include a number, and include a capital letter. </div><br>
+
+                <div class="rightDiv">
+                    <label for="Pass" type="text">Password: </label>
+                    <input name="Pass" class="inputtext" type="password">
+                </div>
+
+                <p id="PassLen" class="Error"></p>
+                <p id="PassNum" class="Error"></p>
+                <p id="PassCapital" class="Error"></p>
+                <p id="PassValid" class="Error"></p>
+                <p id="PassChar" class="Error"></p>
+                <br>
+                
+                <div class="rightDiv"><label for="ConfirmPass" class="text" type="text" >Confirm Password: </label> 
+                <input name="ConfirmPass" class="inputtext" type="password"></div>
+                <p id="PassCheck" class="Error"></p>
+                <br>
+                <div id="submit">
+                    <input name="Submit" type="submit" value ="Register" id="Register">
+                </div>
+                
+            </form>
+            <form id="PlayForm" method="post">
+                <h1>Play Space!</h1>
+                <div id="message">
+                    A few small interactable objects for you to play around with <br>
+                    Try clicking on things or dragging sliders!
+                </div>
+
+                <hr>
+                <image src="square.png" class="image" id="rotatablesquare"></image>
+
+
+                <br>
+                <div id = "coolersquarediv">
+                    <div class="divsquare" id="rotatablesquare2">Im a Div :)</div>
+                    <div>
+                        <input type="range" min="0" max="255" value="0" class="slider" id="RedSlider" name="slider">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="GreenSlider" name="slider">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="BlueSlider" name="slider">
+                    </div>
+                
+                    <div>
+                        <select name="shapeselector" id="shapeselector">
+                            <option value="Square">Square</option>
+                            <option value="Circle">Circle</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        <div id="foot">
+            This application was made by Wayne Quach
+            <br> To see more projects visit <a href="https://github.com/Waynequach1" target="_blank"> https://github.com/Waynequach1</a>
+        </div>
+    </BODY>
+    
     <script type="text/javascript">
-        let text = "There isn't too much to do right now though."
+        let text = "Although there isn't too much to do";
+        setTimeout(function(){document.getElementById("foot").style.marginTop = "39%" }, 2000);
         setTimeout(function(){document.getElementById("SubTitle").innerHTML = text}, 2000);
-        setTimeout(function(){document.getElementById("Registerform").style.visibility = "visible" }, 0);
+        setTimeout(function(){document.getElementById("Registerform").style.visibility = "visible" }, 2000);
+        setTimeout(function(){document.getElementById("PlayForm").style.visibility = "visible" }, 2000);
 
         //Event Listeners
 
@@ -87,6 +102,30 @@
         document.getElementById("rotatablesquare2").addEventListener('click', rotateSquare);
         document.getElementById("rotatablesquare").rotated = 0;
         document.getElementById("rotatablesquare2").rotated = 0;
+        for (i = 0; i < 3; i ++) {
+            document.getElementsByName("slider")[i].addEventListener('change', handleColorChange);
+        }
+        document.getElementById("shapeselector").addEventListener('change', changeShape);
+
+        
+        function changeShape() {
+            const square = document.getElementById("rotatablesquare2");
+            if (this.value == "Circle") {
+                square.style.borderRadius = "50%";
+            } else {
+                square.style.borderRadius = "0%";
+            }
+        }
+
+
+        //Funtion Handlers
+        function handleColorChange() {
+            const square = document.getElementById("rotatablesquare2");
+            const red = document.getElementById("RedSlider").value;
+            const green = document.getElementById("GreenSlider").value;
+            const blue = document.getElementById("BlueSlider").value;
+            square.style.backgroundColor = "rgb(" + red + "," + green + "," + blue + ")";
+        }
 
         function rotateSquare() {
             this.rotated += 45;
@@ -95,6 +134,7 @@
             }
             this.style.transform = "rotate(" + this.rotated + "deg)";
         }
+
         function handleConfirmPassField(repeat) {
             let enteredpass = document.getElementsByName("Pass")[0].value;
             document.getElementById("PassCheck").innerHTML = "";
